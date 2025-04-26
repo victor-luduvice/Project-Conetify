@@ -1,34 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// Importação dos hooks do React
+import { useState, useEffect } from 'react'
+// Importação dos componentes principais do site
+import Header from './components/Header/Header'
+import Hero from './components/Hero/Hero'
+import Services from './components/Services/Services'
+import About from './components/About/About'
+import Contact from './components/Contact/Contact'
+import Footer from './components/Footer/Footer'
+// Importação dos estilos globais
 import './App.css'
 
+// Componente principal da aplicação
 function App() {
-  const [count, setCount] = useState(0)
+  // Estado para controlar a visibilidade das animações nas seções
+  const [isVisible, setIsVisible] = useState(false)
 
+  // Hook de efeito para ativar animações ao rolar a página
+  useEffect(() => {
+    // Função chamada ao rolar a página
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      const windowHeight = window.innerHeight
+      // Seleciona a seção de serviços pelo id
+      const servicesSection = document.getElementById('services')
+      
+      if (servicesSection) {
+        const sectionPosition = servicesSection.offsetTop
+        // Ativa animação quando a seção de serviços entra na tela
+        if (scrollPosition > sectionPosition - windowHeight + 200) {
+          setIsVisible(true)
+        }
+      }
+    }
+
+    // Adiciona o listener de scroll
+    window.addEventListener('scroll', handleScroll)
+    // Remove o listener ao desmontar
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Renderização dos componentes do site
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app">
+      {/* Cabeçalho e navegação */}
+      <Header />
+      {/* Seção principal (hero) */}
+      <Hero />
+      {/* Seção de serviços, recebe o estado de animação */}
+      <Services isVisible={isVisible} />
+      {/* Seção sobre nós, recebe o estado de animação */}
+      <About isVisible={isVisible} />
+      {/* Seção de contato, recebe o estado de animação */}
+      <Contact isVisible={isVisible} />
+      {/* Rodapé */}
+      <Footer />
+    </div>
   )
 }
 
