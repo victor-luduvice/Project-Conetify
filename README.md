@@ -35,7 +35,7 @@ Se você tem um negócio e quer marcar presença no digital, a Conetify é pra v
 
 ## 👨‍💻 Em Desenvolvimento
 
-Este projeto está em construção 🚧. Fique à vontade para acompanhar os commits e a evolução do site da Conetify.
+Este projeto está em construção 🚧 Fique à vontade para acompanhar os commits e a evolução do site da Conetify.
 
 
 **Conetify** — Conectando você ao digital.  
