@@ -14,6 +14,20 @@ import './App.css'
 function App() {
   // Estado para controlar a visibilidade das animações nas seções
   const [isVisible, setIsVisible] = useState(false)
+  // Estado para controlar o tema (claro/escuro)
+  const [darkMode, setDarkMode] = useState(false)
+  // Estado para controlar o idioma (pt/en)
+  const [lang, setLang] = useState('pt')
+
+  // Função para alternar o tema
+  const toggleTheme = () => {
+    setDarkMode((prev) => !prev)
+  }
+
+  // Função para alternar o idioma
+  const toggleLang = () => {
+    setLang((prev) => (prev === 'pt' ? 'en' : 'pt'))
+  }
 
   // Hook de efeito para ativar animações ao rolar a página
   useEffect(() => {
@@ -39,21 +53,26 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Hook de efeito para aplicar a classe do tema no body
+  useEffect(() => {
+    document.body.className = darkMode ? 'dark-mode' : ''
+  }, [darkMode])
+
   // Renderização dos componentes do site
   return (
-    <div className="app">
+    <div className={`app${darkMode ? ' dark' : ''}`}>
       {/* Cabeçalho e navegação */}
-      <Header />
+      <Header darkMode={darkMode} toggleTheme={toggleTheme} lang={lang} toggleLang={toggleLang} />
       {/* Seção principal (hero) */}
-      <Hero />
+      <Hero lang={lang} />
       {/* Seção de serviços, recebe o estado de animação */}
-      <Services isVisible={isVisible} />
+      <Services isVisible={isVisible} lang={lang} />
       {/* Seção sobre nós, recebe o estado de animação */}
-      <About isVisible={isVisible} />
+      <About isVisible={isVisible} lang={lang} />
       {/* Seção de contato, recebe o estado de animação */}
-      <Contact isVisible={isVisible} />
+      <Contact isVisible={isVisible} lang={lang} />
       {/* Rodapé */}
-      <Footer />
+      <Footer lang={lang} />
     </div>
   )
 }

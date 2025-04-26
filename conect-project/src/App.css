@@ -23,6 +23,18 @@ body {
   background: #fff;
 }
 
+/* Modo escuro global */
+.dark,
+.dark-mode {
+  background: #18181b !important;
+  color: #f3f4f6 !important;
+}
+
+.dark .app {
+  background: #18181b;
+  color: #f3f4f6;
+}
+
 /* Animações */
 @keyframes fadeIn {
   from {

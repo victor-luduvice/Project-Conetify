@@ -1,0 +1,150 @@
+@use '../../styles/variables' as *;
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $main-gradient;
+  color: #fff;
+  text-align: center;
+  padding: 0 2rem;
+  position: relative;
+  overflow: hidden;
+
+  // Efeito de luz/blur decorativo
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba($accent,0.12) 0%, transparent 70%);
+    transform: translateX(-50%);
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+.hero-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-illustration {
+  width: 320px;
+  height: 320px;
+  min-width: 220px;
+  max-width: 40vw;
+  opacity: 0;
+  animation: fadeInUp 1.2s 0.7s cubic-bezier(.23,1.01,.32,1) forwards;
+  filter: drop-shadow(0 8px 32px rgba($primary, 0.13));
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  text-shadow: 0 4px 24px rgba($primary, 0.12);
+}
+
+.hero p {
+  font-size: 1.35rem;
+  margin-bottom: 2.5rem;
+  color: #e0e7ef;
+  font-weight: 400;
+}
+
+.cta-button {
+  background: $accent-gradient;
+  color: #fff;
+  border: none;
+  padding: 1.1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: $radius;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba($primary, 0.10);
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  outline: none;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    background: $main-gradient;
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 8px 32px rgba($primary, 0.18);
+  }
+}
+
+// Animações
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+  opacity: 0;
+}
+.delay-1 {
+  animation-delay: 0.3s;
+}
+.delay-2 {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// Modo escuro
+.dark .hero {
+  background: linear-gradient(135deg, #18181b 0%, #1e293b 100%);
+  color: #f3f4f6;
+}
+.dark .hero h1 {
+  color: #fff;
+  text-shadow: 0 4px 24px rgba($accent, 0.10);
+}
+.dark .hero p {
+  color: #cbd5e1;
+}
+
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .hero-content-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .hero-illustration {
+    width: 220px;
+    height: 220px;
+    max-width: 80vw;
+  }
+} 

@@ -1,0 +1,12 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="32" cy="32" r="30" fill="#2563eb"/>
+  <!-- Rede: pontos conectados -->
+  <circle cx="20" cy="44" r="3" fill="#fff"/>
+  <circle cx="44" cy="20" r="3" fill="#fff"/>
+  <circle cx="32" cy="32" r="3" fill="#facc15"/>
+  <path d="M20 44 L32 32 L44 20" stroke="#facc15" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Raio estilizado -->
+  <path d="M36 38 L32 32 L38 32 L28 20" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Efeito glow -->
+  <circle cx="32" cy="32" r="12" fill="#facc15" fill-opacity="0.13"/>
+</svg> 

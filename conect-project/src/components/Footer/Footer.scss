@@ -1,0 +1,50 @@
+@use '../../styles/variables' as *;
+
+.footer {
+  background: $dark-glass-bg;
+  color: #fff;
+  text-align: center;
+  padding: 2.5rem 1rem 2rem 1rem;
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+  box-shadow: 0 -2px 16px rgba($primary, 0.08);
+  margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .footer {
+    font-size: 0.98rem;
+    padding: 2rem 0.5rem 1.5rem 0.5rem;
+  }
+}
+
+.footer-shape {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-bottom: -10px;
+  pointer-events: none;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.2rem;
+}
+
+.footer-social {
+  color: $primary;
+  font-size: 1.6rem;
+  transition: color 0.3s, transform 0.3s;
+  opacity: 0.85;
+}
+
+.footer-social:hover {
+  color: $accent;
+  transform: scale(1.15) rotate(-8deg);
+  opacity: 1;
+} 
