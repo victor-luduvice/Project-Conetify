@@ -1,5 +1,6 @@
 @use '../../styles/variables' as *;
 
+// Estilos da seção de Contato
 .contact {
   padding: $space-lg $space-sm;
   background: $glass-bg;
@@ -7,6 +8,7 @@
   z-index: 1;
 }
 
+// Título da seção de Contato
 .contact h2 {
   text-align: center;
   font-size: 2.3rem;
@@ -16,6 +18,7 @@
   letter-spacing: 1px;
 }
 
+// Ícone do título
 .contact-title-icon {
   font-size: 1.3em;
   color: $primary;
@@ -29,6 +32,7 @@
   color: $accent;
 }
 
+// Formulário de contato
 .contact-form {
   max-width: 600px;
   margin: 0 auto;
@@ -44,6 +48,7 @@
   animation: fadeInUpForm 1.1s cubic-bezier(.23,1.01,.32,1) forwards;
 }
 
+// Inputs e textarea do formulário
 .contact-form input,
 .contact-form textarea {
   padding: 1.1rem;
@@ -56,6 +61,7 @@
   font-family: inherit;
 }
 
+// Foco nos inputs/textarea
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
@@ -63,11 +69,13 @@
   box-shadow: 0 0 0 3px rgba($primary, 0.10);
 }
 
+// Textarea do formulário
 .contact-form textarea {
   min-height: 140px;
   resize: vertical;
 }
 
+// Botão do formulário de contato
 .contact-form button {
   background: $main-gradient;
   color: #fff;
@@ -89,6 +97,7 @@
   }
 }
 
+// Animações
 .slide-up {
   animation: slideUp 1s ease forwards;
   opacity: 0;
@@ -129,7 +138,7 @@
   }
 }
 
-// Modo escuro
+// Modo escuro para a seção de contato
 .dark .contact {
   background: #18181b;
 }
@@ -157,6 +166,7 @@
   color: #fff;
 }
 
+// Responsividade
 @media (max-width: 900px) {
   .contact h2 {
     font-size: 1.5rem;

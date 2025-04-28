@@ -1,5 +1,6 @@
 @use '../../styles/variables' as *;
 
+// Estilos da seção principal (Hero)
 .hero {
   min-height: 100vh;
   display: flex;
@@ -27,6 +28,7 @@
   }
 }
 
+// Wrapper do conteúdo principal do Hero
 .hero-content-wrapper {
   display: flex;
   align-items: center;
@@ -38,6 +40,7 @@
   z-index: 1;
 }
 
+// Ilustração SVG do Hero
 .hero-illustration {
   width: 320px;
   height: 320px;
@@ -48,6 +51,7 @@
   filter: drop-shadow(0 8px 32px rgba($primary, 0.13));
 }
 
+// Título principal do Hero
 .hero h1 {
   font-size: 3.5rem;
   font-weight: 800;
@@ -57,6 +61,7 @@
   text-shadow: 0 4px 24px rgba($primary, 0.12);
 }
 
+// Descrição do Hero
 .hero p {
   font-size: 1.35rem;
   margin-bottom: 2.5rem;
@@ -64,6 +69,7 @@
   font-weight: 400;
 }
 
+// Botão de chamada para ação (Fale Conosco)
 .cta-button {
   background: $accent-gradient;
   color: #fff;
@@ -87,7 +93,7 @@
   }
 }
 
-// Animações
+// Animações de fade-in
 .fade-in {
   animation: fadeIn 1s ease forwards;
   opacity: 0;
@@ -99,6 +105,7 @@
   animation-delay: 0.6s;
 }
 
+// Keyframes das animações
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -121,7 +128,7 @@
   }
 }
 
-// Modo escuro
+// Modo escuro para a seção Hero
 .dark .hero {
   background: linear-gradient(135deg, #18181b 0%, #1e293b 100%);
   color: #f3f4f6;
@@ -132,6 +139,18 @@
 }
 .dark .hero p {
   color: #cbd5e1;
+}
+
+.dark .cta-button {
+  background: linear-gradient(90deg, #2563eb 0%, #facc15 100%);
+  color: #18181b;
+  border: 2px solid transparent;
+}
+
+.dark .cta-button:hover {
+  background: $main-gradient;
+  color: #fff;
+  filter: none;
 }
 
 @media (max-width: 900px) {

@@ -1,5 +1,6 @@
 @use '../../styles/variables' as *;
 
+// Estilos do cabeçalho (Header)
 .header {
   position: fixed;
   top: 0;
@@ -15,6 +16,7 @@
   transition: background 0.4s, box-shadow 0.4s;
 }
 
+// Navegação principal
 .nav {
   max-width: 1200px;
   margin: 0 auto;
@@ -24,6 +26,7 @@
   padding: 0 2rem;
 }
 
+// Logo da empresa
 .logo {
   font-size: 2rem;
   font-weight: 700;
@@ -35,6 +38,7 @@
   gap: 0.7rem;
 }
 
+// Imagem da logo
 .logo-img {
   width: 2.2rem;
   height: 2.2rem;
@@ -45,11 +49,13 @@
   padding: 0.15rem;
 }
 
+// Links de navegação
 .nav-links {
   display: flex;
   gap: 2.5rem;
 }
 
+// Link individual de navegação
 .nav-links a {
   text-decoration: none;
   color: $text;
@@ -79,6 +85,7 @@
   }
 }
 
+// Botões de alternância de idioma e tema
 .lang-toggle, .theme-toggle {
   background: none;
   border: 1px solid $primary;
@@ -95,12 +102,14 @@
   gap: 0.3rem;
 }
 
+// Hover dos botões de alternância
 .lang-toggle:hover, .theme-toggle:hover {
   background: $primary;
   color: #fff;
   border: 1px solid $primary;
 }
 
+// Modo escuro para o header
 .dark .header {
   background: rgba($dark-glass-bg, 0.92);
   border-bottom: 1px solid rgba($primary, 0.12);
@@ -117,6 +126,7 @@
   border: 1px solid $secondary;
 }
 
+// Responsividade
 @media (max-width: 900px) {
   .nav {
     padding: 0 1rem;

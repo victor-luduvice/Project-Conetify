@@ -1,9 +1,11 @@
+// Estilos da seção de etapas (Steps)
 .steps-section {
   padding: 4rem 1rem 3rem 1rem;
   background: #fff;
   text-align: center;
 }
 
+// Título da seção de etapas
 .steps-title {
   font-size: 2rem;
   font-weight: 400;
@@ -12,6 +14,7 @@
   line-height: 1.3;
 }
 
+// Destaque do título
 .steps-highlight {
   color: #36c3e4;
   font-size: 2.2rem;
@@ -20,6 +23,7 @@
   margin-top: 0.5rem;
 }
 
+// Grid dos cards de etapas
 .steps-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -29,6 +33,7 @@
   margin: 0 auto;
 }
 
+// Card individual de etapa
 .step-card {
   background: #fff;
   border: 2px solid #e5e7eb;
@@ -49,6 +54,7 @@
   transform: translateY(-4px) scale(1.03);
 }
 
+// Ícone do card de etapa
 .step-icon {
   font-size: 2.3rem;
   color: #36c3e4;
@@ -62,6 +68,7 @@
   box-shadow: 0 2px 8px rgba(54,195,228,0.08);
 }
 
+// Título do card de etapa
 .step-title {
   font-size: 1.1rem;
   font-weight: 700;
@@ -69,6 +76,7 @@
   color: #222;
 }
 
+// Subtítulo do card de etapa
 .step-subtitle {
   font-size: 1.08rem;
   font-weight: 600;
@@ -76,12 +84,14 @@
   margin-bottom: 0.3rem;
 }
 
+// Descrição do card de etapa
 .step-desc {
   font-size: 1rem;
   color: #444;
   font-weight: 400;
 }
 
+// Responsividade
 @media (max-width: 900px) {
   .steps-grid {
     grid-template-columns: 1fr;
@@ -91,4 +101,42 @@
   .steps-title, .steps-highlight {
     font-size: 1.3rem;
   }
+}
+
+// Modo escuro para a seção de etapas
+.dark .steps-section {
+  background: #18181b;
+}
+
+.dark .steps-title {
+  color: #f3f4f6;
+}
+
+.dark .steps-highlight {
+  color: #36c3e4;
+}
+
+.dark .step-card {
+  background: #232334;
+  border: 2px solid rgba(54, 195, 228, 0.2);
+  box-shadow: 0 2px 16px rgba(54, 195, 228, 0.1);
+}
+
+.dark .step-card:hover {
+  border: 2px solid #36c3e4;
+  box-shadow: 0 8px 32px rgba(54, 195, 228, 0.2);
+}
+
+.dark .step-title,
+.dark .step-subtitle {
+  color: #f3f4f6;
+}
+
+.dark .step-desc {
+  color: #e0e7ef;
+}
+
+.dark .step-icon {
+  background: #e0f7fa;
+  color: #36c3e4;
 } 

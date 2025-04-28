@@ -14,22 +14,6 @@ const ServicesShape = () => (
   </svg>
 )
 
-// Array com as etapas do fluxo Conetify
-const etapas = [
-  {
-    icon: <FaUsers />, title: 'Reunião Inicial',
-    desc: 'Entendemos o que você deseja em uma reunião personalizada e esclarecemos todas as dúvidas.'
-  },
-  {
-    icon: <FaRocket />, title: 'Entrega Rápida',
-    desc: 'Seu site é entregue em até 2 dias, pronto para ser usado e ajustado conforme sua necessidade.'
-  },
-  {
-    icon: <FaBullhorn />, title: 'Divulgação Profissional',
-    desc: 'Nossa equipe de marketing entra em ação para divulgar seu site e atrair clientes.'
-  }
-]
-
 // Componente responsável pela seção de serviços oferecidos e pelo fluxo Conetify
 function Services({ isVisible, lang }) {
   // Textos em ambos os idiomas
@@ -43,6 +27,37 @@ function Services({ isVisible, lang }) {
     consultDesc: lang === 'en' ? 'Strategies for your business' : 'Estratégias para seu negócio',
     flow: lang === 'en' ? 'How does the Conetify flow work?' : 'Como funciona o fluxo Conetify?',
   }
+
+  // Etapas do fluxo Conetify dependentes do idioma
+  const etapas = lang === 'en'
+    ? [
+        {
+          icon: <FaUsers />, title: 'Initial Meeting',
+          desc: 'We understand your needs in a personalized meeting and clarify all your questions.'
+        },
+        {
+          icon: <FaRocket />, title: 'Fast Delivery',
+          desc: 'Your website is delivered within 2 days, ready to use and adjusted as needed.'
+        },
+        {
+          icon: <FaBullhorn />, title: 'Professional Promotion',
+          desc: 'Our marketing team takes action to promote your site and attract clients.'
+        }
+      ]
+    : [
+        {
+          icon: <FaUsers />, title: 'Reunião Inicial',
+          desc: 'Entendemos o que você deseja em uma reunião personalizada e esclarecemos todas as dúvidas.'
+        },
+        {
+          icon: <FaRocket />, title: 'Entrega Rápida',
+          desc: 'Seu site é entregue em até 2 dias, pronto para ser usado e ajustado conforme sua necessidade.'
+        },
+        {
+          icon: <FaBullhorn />, title: 'Divulgação Profissional',
+          desc: 'Nossa equipe de marketing entra em ação para divulgar seu site e atrair clientes.'
+        }
+      ];
 
   return (
     // Seção de serviços
