@@ -1,9 +1,12 @@
 package com.conetify.model;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,27 +14,28 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Entity
-@Table(name = "users")
+/**
+ * Entidade User que representa um usuário no sistema
+ * Usa anotações do MongoDB para persistência
+ */
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Document(collection = "users")
 public class User implements UserDetails {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     
-    @Column(nullable = false, unique = true)
+    @Indexed(unique = true)
     private String username;
     
-    @Column(nullable = false)
     private String password;
     
-    @Column(nullable = false, unique = true)
+    @Indexed(unique = true)
     private String email;
     
-    @Enumerated(EnumType.STRING)
     private Role role;
     
     @Override
