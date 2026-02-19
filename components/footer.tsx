@@ -1,5 +1,3 @@
-import Image from "next/image"
-
 export function Footer() {
   return (
     <footer className="border-t border-border/50 py-8">
@@ -8,14 +6,7 @@ export function Footer() {
           href="#"
           className="flex items-center text-lg font-bold tracking-tight text-foreground"
         >
-          <Image
-            src="/images/logo.png"
-            alt="Connect logo"
-            width={32}
-            height={32}
-            className="h-8 w-8 -mr-1.5 object-contain"
-          />
-          <span>onnect</span>
+          <span>connect</span>
           <span className="text-primary">.</span>
         </a>
         <p className="text-sm text-muted-foreground">

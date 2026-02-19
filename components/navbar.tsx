@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
 import { Menu, X } from "lucide-react"
 
 const navLinks = [
@@ -18,14 +17,6 @@ export function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="#" className="flex items-center gap-1.5 text-base font-semibold tracking-tight text-foreground">
-          <Image
-            src="/images/logo.png"
-            alt="Connect logo"
-            width={22}
-            height={22}
-            className="h-[22px] w-[22px] object-contain"
-            priority
-          />
           <span>
             {'connect'}<span className="text-primary">.</span>
           </span>

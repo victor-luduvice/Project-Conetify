@@ -1,26 +1,11 @@
 "use client"
 
-import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { FadeIn } from "@/components/fade-in"
 
 export function HeroSection() {
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden pt-20">
-      {/* Watermark logo */}
-      <div
-        className="pointer-events-none absolute -bottom-20 -right-40 select-none opacity-[0.02] md:-right-24 lg:-right-10"
-        aria-hidden="true"
-      >
-        <Image
-          src="/images/logo.png"
-          alt=""
-          width={2000}
-          height={2000}
-          className="h-[60vh] w-auto min-w-[60vh] object-contain md:h-[65vh] md:min-w-[65vh] lg:h-[70vh] lg:min-w-[70vh]"
-        />
-      </div>
-
       {/* Background glow */}
       <div
         className="pointer-events-none absolute left-1/2 top-1/4 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-[0.06]"
