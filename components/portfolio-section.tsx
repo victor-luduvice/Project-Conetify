@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { ExternalLink } from "lucide-react"
 import { FadeIn } from "@/components/fade-in"
 
@@ -7,17 +8,17 @@ const projects = [
   {
     title: "E-Commerce Premium",
     category: "Site de Alta Conversão",
-    color: "from-blue-500 to-blue-600",
+    image: "/images/portfolio-1.jpg",
   },
   {
     title: "FitTrack App",
     category: "Aplicativo Mobile",
-    color: "from-green-500 to-green-600",
+    image: "/images/portfolio-2.jpg",
   },
   {
     title: "Studio Brand Identity",
     category: "Identidade Visual",
-    color: "from-purple-500 to-purple-600",
+    image: "/images/portfolio-3.jpg",
   },
 ]
 
@@ -44,7 +45,13 @@ export function PortfolioSection() {
           {projects.map((project, i) => (
             <FadeIn key={project.title} delay={i * 0.1}>
               <div className="group relative overflow-hidden rounded-xl border border-border/60 bg-card/50 backdrop-blur-sm transition-all hover:border-primary/30">
-                <div className={`relative aspect-[4/3] overflow-hidden bg-gradient-to-br ${project.color}`}>
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                   {/* Overlay on hover */}
                   <div className="absolute inset-0 flex items-center justify-center bg-background/70 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground">
