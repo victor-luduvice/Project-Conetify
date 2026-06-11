@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { useState, type FormEvent } from "react"
-import { Send, Mail, User, ChevronDown } from "lucide-react"
-import { FadeIn } from "@/components/fade-in"
+import { useState, type FormEvent } from "react";
+import { Send, Mail, User, ChevronDown } from "lucide-react";
+import { FadeIn } from "@/components/fade-in";
 
 const solutions = [
   "Site de Alta Conversão",
@@ -12,14 +12,28 @@ const solutions = [
   "Implantação de CRM",
   "Gestão de Tráfego Pago",
   "Outro",
-]
+];
+
+const whatsappNumber = "5579998333341";
 
 export function ContactSection() {
-  const [submitted, setSubmitted] = useState(false)
+  const [submitted, setSubmitted] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [solution, setSolution] = useState("");
+  const [message, setMessage] = useState("");
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setSubmitted(true)
+    e.preventDefault();
+
+    const text = `Olá! Meu nome é ${name}.
+E-mail: ${email}
+Solução desejada: ${solution}
+Mensagem: ${message}`;
+
+    const url = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
+    setSubmitted(true);
   }
 
   return (
@@ -48,10 +62,11 @@ export function ContactSection() {
                   <Send className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground">
-                  Mensagem enviada!
+                  Pronto! Abrindo WhatsApp...
                 </h3>
                 <p className="mt-2 text-muted-foreground">
-                  Obrigado pelo interesse. Retornaremos em breve.
+                  A mensagem foi preparada e o WhatsApp será aberto em uma nova
+                  aba.
                 </p>
               </div>
             </FadeIn>
@@ -75,6 +90,8 @@ export function ContactSection() {
                       name="name"
                       type="text"
                       required
+                      value={name}
+                      onChange={(event) => setName(event.target.value)}
                       placeholder="Seu nome completo"
                       className="w-full rounded-lg border border-border bg-secondary/50 px-4 py-3 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
                     />
@@ -92,6 +109,8 @@ export function ContactSection() {
                       name="email"
                       type="email"
                       required
+                      value={email}
+                      onChange={(event) => setEmail(event.target.value)}
                       placeholder="seu@email.com"
                       className="w-full rounded-lg border border-border bg-secondary/50 px-4 py-3 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
                     />
@@ -111,7 +130,8 @@ export function ContactSection() {
                     id="solution"
                     name="solution"
                     required
-                    defaultValue=""
+                    value={solution}
+                    onChange={(event) => setSolution(event.target.value)}
                     className="w-full appearance-none rounded-lg border border-border bg-secondary/50 px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
                   >
                     <option value="" disabled className="text-muted-foreground">
@@ -137,6 +157,8 @@ export function ContactSection() {
                     name="message"
                     rows={4}
                     required
+                    value={message}
+                    onChange={(event) => setMessage(event.target.value)}
                     placeholder="Descreva brevemente o que precisa..."
                     className="w-full resize-none rounded-lg border border-border bg-secondary/50 px-4 py-3 text-sm text-foreground placeholder-muted-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
                   />
@@ -155,5 +177,5 @@ export function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
