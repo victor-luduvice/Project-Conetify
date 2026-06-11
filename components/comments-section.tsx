@@ -4,30 +4,6 @@ import { useEffect, useState, type FormEvent } from "react";
 import { Star } from "lucide-react";
 import { FadeIn } from "@/components/fade-in";
 
-const testimonials = [
-  {
-    name: "Rafael Mendes",
-    role: "CEO, TechNova",
-    initials: "RM",
-    quote:
-      "A Connect triplicou nossas conversões em 3 meses. A equipe entendeu nosso negócio e entregou muito além do esperado.",
-  },
-  {
-    name: "Carolina Alves",
-    role: "Diretora de Marketing, Bloom",
-    initials: "CA",
-    quote:
-      "O agente de IA que implementaram reduziu nosso tempo de atendimento em 70%. Resultados reais e mensuráveis.",
-  },
-  {
-    name: "Diego Ferreira",
-    role: "Fundador, GreenScale",
-    initials: "DF",
-    quote:
-      "Do branding ao app, a Connect cuidou de tudo. Nosso posicionamento digital nunca esteve tão forte.",
-  },
-];
-
 interface CommentData {
   name: string;
   rating: number;
@@ -35,7 +11,7 @@ interface CommentData {
   createdAt: string;
 }
 
-export function TestimonialsSection() {
+export function CommentsSection() {
   const [name, setName] = useState("");
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState("");
@@ -68,9 +44,7 @@ export function TestimonialsSection() {
     setLoading(true);
     const response = await fetch("/api/comments", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, rating, comment }),
     });
     setLoading(false);
@@ -89,79 +63,33 @@ export function TestimonialsSection() {
   }
 
   return (
-    <section id="depoimentos" className="py-28 md:py-36">
+    <section id="avaliacoes" className="py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-6">
         <FadeIn>
           <div className="text-center">
             <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-              Depoimentos
+              Avaliações
             </p>
             <h2 className="mt-3 text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-              O que nossos clientes dizem
+              Deixe sua avaliação ou veja o que outros clientes acham
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-pretty text-muted-foreground">
-              Resultados reais de empresas que confiaram na Connect para escalar
-              seu ecossistema digital.
+              Avaliações ajudam pessoas a entenderem seu trabalho e dão prova
+              social para sua empresa.
             </p>
           </div>
         </FadeIn>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <FadeIn key={t.name} delay={i * 0.1}>
-              <article className="flex h-full flex-col rounded-xl border border-border/60 bg-card/50 p-6 backdrop-blur-sm">
-                <div className="mb-4 flex gap-1">
-                  {Array.from({ length: 5 }).map((_, j) => (
-                    <Star
-                      key={j}
-                      className="h-4 w-4 fill-primary text-primary"
-                    />
-                  ))}
-                </div>
-
-                <blockquote className="flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {`"${t.quote}"`}
-                </blockquote>
-
-                <div className="mt-6 flex items-center gap-3 border-t border-border/40 pt-5">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 text-sm font-bold text-primary">
-                    {t.initials}
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground">
-                      {t.name}
-                    </p>
-                    <p className="text-xs text-muted-foreground">{t.role}</p>
-                  </div>
-                </div>
-              </article>
-            </FadeIn>
-          ))}
-        </div>
-
-        <div className="mt-16 grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="mt-16 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <FadeIn delay={0.1}>
             <div className="rounded-3xl border border-border/60 bg-card/50 p-8 backdrop-blur-sm">
-              <div className="mb-8">
-                <p className="text-sm font-semibold uppercase tracking-widest text-primary">
-                  Deixe seu depoimento
-                </p>
-                <h3 className="mt-2 text-2xl font-bold text-foreground">
-                  Avalie nosso trabalho e ajude outros clientes
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Preencha o comentário e sua avaliação aparecerá imediatamente
-                  na lista abaixo.
-                </p>
-              </div>
-
               {submitted ? (
                 <div className="rounded-3xl border border-primary/30 bg-primary/5 p-8 text-center">
                   <p className="text-xl font-semibold text-foreground">
-                    Obrigado pelo depoimento!
+                    Obrigado pela avaliação!
                   </p>
                   <p className="mt-2 text-muted-foreground">
-                    Ele já foi registrado e será exibido para outros visitantes.
+                    Sua opinião já foi registrada e aparecerá no painel.
                   </p>
                 </div>
               ) : (
@@ -180,6 +108,7 @@ export function TestimonialsSection() {
                       onChange={(event) => setName(event.target.value)}
                       placeholder="Seu nome"
                       className="w-full rounded-2xl border border-border bg-secondary/50 px-4 py-3 text-sm text-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
+                      required
                     />
                   </div>
 
@@ -195,8 +124,8 @@ export function TestimonialsSection() {
                         const value = index + 1;
                         return (
                           <button
-                            key={value}
                             type="button"
+                            key={value}
                             onClick={() => setRating(value)}
                             className={`rounded-full p-2 transition ${
                               rating >= value
@@ -225,6 +154,7 @@ export function TestimonialsSection() {
                       onChange={(event) => setComment(event.target.value)}
                       placeholder="Conte como nossa solução ajudou sua empresa..."
                       className="w-full resize-none rounded-2xl border border-border bg-secondary/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-primary focus:ring-1 focus:ring-primary"
+                      required
                     />
                   </div>
 
@@ -237,7 +167,7 @@ export function TestimonialsSection() {
                     disabled={loading}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-3 text-base font-semibold text-primary-foreground transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-70"
                   >
-                    {loading ? "Enviando..." : "Enviar depoimento"}
+                    {loading ? "Enviando..." : "Enviar avaliação"}
                   </button>
                 </form>
               )}
@@ -248,15 +178,18 @@ export function TestimonialsSection() {
             <div className="space-y-5">
               {comments.length === 0 ? (
                 <div className="rounded-3xl border border-border/60 bg-card/50 p-8 text-center text-muted-foreground">
-                  Nenhum depoimento enviado ainda.
+                  Nenhuma avaliação enviada ainda.
                 </div>
               ) : (
-                comments.map((item) => (
+                comments.slice(0, 4).map((item) => (
                   <article
                     key={`${item.name}-${item.createdAt}`}
                     className="rounded-3xl border border-border/60 bg-card/50 p-6 shadow-sm"
                   >
-                    <div className="mb-4 flex items-center justify-between gap-3">
+                    <div className="mb-4 flex items-center gap-3">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/15 text-sm font-bold text-primary">
+                        {item.name.slice(0, 2).toUpperCase()}
+                      </div>
                       <div>
                         <p className="text-sm font-semibold text-foreground">
                           {item.name}
@@ -265,18 +198,18 @@ export function TestimonialsSection() {
                           {new Date(item.createdAt).toLocaleDateString("pt-BR")}
                         </p>
                       </div>
-                      <div className="flex gap-1 text-primary">
-                        {Array.from({ length: 5 }).map((_, index) => (
-                          <Star
-                            key={index}
-                            className={
-                              index < item.rating
-                                ? "h-4 w-4 fill-primary text-primary"
-                                : "h-4 w-4 text-muted-foreground"
-                            }
-                          />
-                        ))}
-                      </div>
+                    </div>
+                    <div className="mb-4 flex gap-1 text-primary">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <Star
+                          key={index}
+                          className={
+                            index < item.rating
+                              ? "h-4 w-4 fill-primary text-primary"
+                              : "h-4 w-4 text-muted-foreground"
+                          }
+                        />
+                      ))}
                     </div>
                     <p className="text-sm leading-relaxed text-muted-foreground">
                       {item.comment}
