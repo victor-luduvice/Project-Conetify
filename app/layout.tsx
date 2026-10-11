@@ -6,6 +6,8 @@ import { WhatsAppFloat } from '@/components/layout/WhatsAppFloat'
 
 import './globals.css'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.connectsolucoes.com.br'
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -23,7 +25,7 @@ export const metadata: Metadata = {
   title: 'Connect Soluções Digitais | Sites, Apps, IA e Tráfego Pago em Aracaju',
   description:
     'Sites de alta conversão, aplicativos, IA, CRM e tráfego pago com estratégia integrada e atendimento direto do fundador.',
-  metadataBase: new URL('https://www.connectsolucoes.com.br'),
+  metadataBase: new URL(siteUrl),
   alternates: {
     canonical: '/',
   },
@@ -31,7 +33,7 @@ export const metadata: Metadata = {
     title: 'Connect Soluções Digitais',
     description:
       'Sites de alta conversão, apps e estratégia digital para empresas que querem vender mais.',
-    url: 'https://www.connectsolucoes.com.br',
+    url: siteUrl,
     siteName: 'Connect Soluções Digitais',
     locale: 'pt_BR',
     type: 'website',

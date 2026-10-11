@@ -20,6 +20,7 @@ Crie um arquivo .env.local com as seguintes variáveis:
 ```bash
 RESEND_API_KEY=
 CONTACT_TO_EMAIL=victor.connect1@outlook.com
+NEXT_PUBLIC_SITE_URL=https://www.connectsolucoes.com.br
 NEXT_PUBLIC_GA_ID=
 NEXT_PUBLIC_META_PIXEL_ID=
 ```
