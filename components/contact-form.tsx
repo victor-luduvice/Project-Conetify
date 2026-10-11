@@ -47,8 +47,25 @@ export function ContactForm() {
     },
   })
 
-  const onSubmit = async () => {
-    setStatus('success')
+  const onSubmit = async (values: ContactFormValues) => {
+    setStatus('idle')
+
+    try {
+      const response = await fetch('/api/contato', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      })
+
+      if (!response.ok) {
+        setStatus('error')
+        return
+      }
+
+      setStatus('success')
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (

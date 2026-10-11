@@ -8,7 +8,7 @@ export async function saveNewsletterLead(email: string) {
   return saved;
 }
 
-export function getNewsletterLeads() {
+export async function getNewsletterLeads() {
   return getAllLeads();
 }
 

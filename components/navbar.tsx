@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
-import { navItems, siteConfig } from '@/data/site'
+import { navItems } from '@/data/site'
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)

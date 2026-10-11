@@ -119,9 +119,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <h2 className="section-title">Quer conhecer a melhor solução para o seu caso?</h2>
           <p className="mt-4 text-text-muted">Fale com a Connect e vamos entender o que seu negócio precisa.</p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <a href="/#contato" className="btn-primary">
+            <Link href="/#contato" className="btn-primary">
               Solicitar orçamento
-            </a>
+            </Link>
             <Link href="/" className="btn-secondary">
               Voltar para home
             </Link>

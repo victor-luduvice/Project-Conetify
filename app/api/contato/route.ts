@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
-import { z } from 'zod'
 
 import { contactSchema } from '@/lib/validators'
 
@@ -9,6 +8,19 @@ const limiter = new Map<string, { count: number; resetAt: number }>()
 
 function sanitize(value: string | undefined) {
   return (value ?? '').trim().replace(/\s+/g, ' ')
+}
+
+function escapeHtml(value: string) {
+  return value.replace(/[&<>"']/g, (character) => {
+    const entities: Record<string, string> = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    }
+    return entities[character]
+  })
 }
 
 function getClientIp(request: NextRequest) {
@@ -66,29 +78,33 @@ export async function POST(request: NextRequest) {
     }
 
     const data = payload.data
+    const fromEmail = process.env.RESEND_FROM_EMAIL
 
-    if (!resend) {
-      return NextResponse.json({ message: 'Contato recebido localmente. Configure RESEND_API_KEY para envio pelo e-mail.', ok: true })
+    if (!resend || !fromEmail) {
+      return NextResponse.json(
+        { error: 'O formulário está temporariamente indisponível.' },
+        { status: 503 },
+      )
     }
 
     const emailResponse = await resend.emails.send({
-      from: 'Connect Soluções Digitais <onboarding@resend.dev>',
+      from: fromEmail,
       to: [process.env.CONTACT_TO_EMAIL ?? 'victor.connect1@outlook.com'],
       subject: `Novo contato: ${data.service}`,
       html: `
         <h2>Novo contato recebido</h2>
-        <p><strong>Nome:</strong> ${data.name}</p>
-        <p><strong>E-mail:</strong> ${data.email}</p>
-        <p><strong>WhatsApp:</strong> ${data.phone}</p>
-        <p><strong>Serviço:</strong> ${data.service}</p>
-        <p><strong>Mensagem:</strong> ${data.message || 'Sem mensagem'}</p>
-        <p><strong>UTM:</strong> ${JSON.stringify({
+        <p><strong>Nome:</strong> ${escapeHtml(data.name)}</p>
+        <p><strong>E-mail:</strong> ${escapeHtml(data.email)}</p>
+        <p><strong>WhatsApp:</strong> ${escapeHtml(data.phone)}</p>
+        <p><strong>Serviço:</strong> ${escapeHtml(data.service)}</p>
+        <p><strong>Mensagem:</strong> ${escapeHtml(data.message || 'Sem mensagem')}</p>
+        <p><strong>UTM:</strong> ${escapeHtml(JSON.stringify({
           utm_source: data.utm_source,
           utm_medium: data.utm_medium,
           utm_campaign: data.utm_campaign,
           utm_term: data.utm_term,
           utm_content: data.utm_content,
-        })}</p>
+        }))}</p>
       `,
     })
 

@@ -11,7 +11,7 @@ export default async function NewsletterAdmin() {
     redirect("/newsletter-admin/login");
   }
 
-  const leads = getNewsletterLeads();
+  const leads = await getNewsletterLeads();
 
   return (
     <div className="min-h-screen bg-background px-6 py-16 text-foreground">
