@@ -108,7 +108,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
             <div className="rounded-2xl border border-border bg-surface/80 p-5">
               <p className="font-medium text-text">Há suporte depois da entrega?</p>
-              <p className="mt-2 text-sm">Sim. Acompanhamos a entrega e possuímos apoio para evoluções e ajustes quando necessário. // TODO(owner): confirmar escopo do suporte.</p>
+              <p className="mt-2 text-sm">Sim. Acompanhamos a entrega e possuímos apoio para evoluções e ajustes quando necessário, com alinhamento de escopo e prioridades conforme a etapa do projeto.</p>
             </div>
           </div>
         </div>

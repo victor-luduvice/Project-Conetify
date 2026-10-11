@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   title: 'Connect Soluções Digitais | Sites, Apps, IA e Tráfego Pago em Aracaju',
   description:
     'Sites de alta conversão, aplicativos, IA, CRM e tráfego pago com estratégia integrada e atendimento direto do fundador.',
-  metadataBase: new URL('https://connectsolucoes.example.com'),
+  metadataBase: new URL('https://www.connectsolucoes.com.br'),
   alternates: {
     canonical: '/',
   },
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: 'Connect Soluções Digitais',
     description:
       'Sites de alta conversão, apps e estratégia digital para empresas que querem vender mais.',
-    url: 'https://connectsolucoes.example.com',
+    url: 'https://www.connectsolucoes.com.br',
     siteName: 'Connect Soluções Digitais',
     locale: 'pt_BR',
     type: 'website',

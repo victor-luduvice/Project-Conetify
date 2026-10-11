@@ -4,7 +4,7 @@ export default function PoliticaPrivacidadePage() {
       <div className="mx-auto max-w-4xl rounded-[2rem] border border-border bg-surface/80 p-8">
         <p className="eyebrow">Legal</p>
         <h1 className="mt-5 font-display text-4xl font-bold text-text">Política de Privacidade</h1>
-        <p className="mt-5 text-sm text-text-muted">// TODO(owner): revisar com um advogado antes de publicar.</p>
+        <p className="mt-5 text-sm text-text-muted">Texto em versão inicial para publicação, sujeito a revisão jurídica conforme a estrutura real de operação e atuação da empresa.</p>
 
         <div className="mt-8 space-y-6 text-text-muted">
           <section>
