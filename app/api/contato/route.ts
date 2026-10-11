@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
 
     const emailResponse = await resend.emails.send({
       from: 'Connect Soluções Digitais <onboarding@resend.dev>',
-      to: [process.env.CONTACT_TO_EMAIL ?? 'contato@connectsolucoes.example.com'],
+      to: [process.env.CONTACT_TO_EMAIL ?? 'victor.connect1@outlook.com'],
       subject: `Novo contato: ${data.service}`,
       html: `
         <h2>Novo contato recebido</h2>
