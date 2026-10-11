@@ -2,56 +2,111 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+:root {
+  --bg: #071012;
+  --bg-elevated: #0b1a1d;
+  --surface: #0f2327;
+  --surface-2: #132c31;
+  --border: rgba(64, 196, 217, 0.22);
+  --border-strong: rgba(64, 196, 217, 0.45);
+  --primary: #40c4d9;
+  --primary-hover: #5bd3e6;
+  --primary-ink: #06181b;
+  --text: #f2f8f8;
+  --text-muted: #9db4b7;
+  --text-subtle: #6f8a8e;
+  --success: #3ddc97;
+  --danger: #ff6b6b;
 }
 
-@layer base {
-  :root {
-    --background: 220 16% 12%;
-    --foreground: 210 20% 95%;
-    --card: 220 18% 14%;
-    --card-foreground: 210 20% 95%;
-    --popover: 220 18% 14%;
-    --popover-foreground: 210 20% 95%;
-    --primary: 207 86% 66%;
-    --primary-foreground: 220 16% 8%;
-    --secondary: 220 14% 18%;
-    --secondary-foreground: 210 20% 90%;
-    --muted: 220 14% 20%;
-    --muted-foreground: 215 15% 55%;
-    --accent: 207 86% 66%;
-    --accent-foreground: 220 16% 8%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 220 14% 22%;
-    --input: 220 14% 22%;
-    --ring: 207 86% 66%;
-    --chart-1: 207 86% 66%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --radius: 0.625rem;
-  }
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-bg text-text antialiased;
+  background-image: radial-gradient(circle at top left, rgba(64, 196, 217, 0.14), transparent 35%);
+  font-family: var(--font-inter), sans-serif;
 }
 
 @layer base {
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-poppins), sans-serif;
+  }
+
+  p {
+    color: var(--text-muted);
+  }
+
+  a {
+    @apply transition-colors duration-200;
   }
 }
 
-.glow-button {
-  position: relative;
-  transition: box-shadow 0.3s ease;
+@layer components {
+  .container-shell {
+    @apply mx-auto w-full max-w-[1200px] px-[20px] md:px-[32px];
+  }
+
+  .section-shell {
+    @apply py-16 md:py-28;
+  }
+
+  .brand-card {
+    @apply rounded-[1rem] border border-[rgba(64,196,217,0.2)] bg-surface/80 p-6 shadow-[0_0_0_1px_rgba(64,196,217,0.05)];
+    border-top-right-radius: 64px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-ink shadow-glow transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-primary/60 bg-transparent px-5 py-3 text-sm font-semibold text-text transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:bg-surface/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary;
+  }
+
+  .section-title {
+    @apply font-display text-[clamp(2rem,4vw,3rem)] font-bold leading-[1.08] text-text;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #f2f8f8 0%, #5bd3e6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
-.glow-button:hover {
-  box-shadow: 0 0 20px 2px hsl(207 86% 66% / 0.3),
-    0 0 48px 6px hsl(207 86% 66% / 0.12);
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(64, 196, 217, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(64, 196, 217, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
 }

@@ -1,82 +1,85 @@
 "use client"
 
-import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
-const navLinks = [
-  { label: "Serviços", href: "#servicos" },
-  { label: "Método", href: "#metodo" },
-  { label: "Portfólio", href: "#portfolio" },
-  { label: "Depoimentos", href: "#depoimentos" },
-]
+import { navItems, siteConfig } from '@/data/site'
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMobileOpen(false)
+      }
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [])
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="#" className="flex items-center gap-1.5 text-base font-semibold tracking-tight text-foreground">
-          <span>
-            {'connect'}<span className="text-primary">.</span>
-          </span>
+    <header className="sticky top-0 z-50 border-b border-border bg-[#071012]/80 backdrop-blur-xl">
+      <a
+        href="#conteudo-principal"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-ink"
+      >
+        Pular para o conteúdo
+      </a>
+      <nav className="container-shell flex items-center justify-between py-4">
+        <a href="#inicio" className="flex items-center gap-2 text-base font-semibold tracking-tight text-text">
+          <span className="font-display text-xl">Connect</span>
+          <span className="text-primary">.</span>
         </a>
 
-        {/* Desktop nav */}
         <ul className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-              >
-                {link.label}
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <a href={item.href} className="text-sm text-text-muted hover:text-text">
+                {item.label}
               </a>
             </li>
           ))}
         </ul>
 
-        <div className="hidden md:block">
-          <a
-            href="#contato"
-            className="glow-button inline-flex items-center rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-all hover:brightness-110"
-          >
-            Orçamento
+        <div className="hidden md:flex md:items-center md:gap-3">
+          <a href={siteConfig.whatsappLink} className="text-sm text-text-muted hover:text-text">
+            WhatsApp
+          </a>
+          <a href="#contato" className="btn-primary">
+            Solicitar orçamento
           </a>
         </div>
 
-        {/* Mobile toggle */}
         <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="text-foreground md:hidden"
-          aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
+          type="button"
+          aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((current) => !current)}
+          className="rounded-full border border-primary/40 p-2 text-text md:hidden"
         >
-          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </nav>
 
-      {/* Mobile menu */}
       {mobileOpen && (
-        <div className="border-t border-border/50 bg-background/95 backdrop-blur-xl md:hidden">
-          <ul className="flex flex-col gap-1 px-6 py-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
+        <div className="border-t border-border bg-bg md:hidden">
+          <ul className="container-shell flex flex-col gap-1 py-4">
+            {navItems.map((item) => (
+              <li key={item.href}>
                 <a
-                  href={link.href}
+                  href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                  className="block rounded-xl px-3 py-3 text-sm text-text-muted hover:bg-surface hover:text-text"
                 >
-                  {link.label}
+                  {item.label}
                 </a>
               </li>
             ))}
-            <li className="mt-2">
-              <a
-                href="#contato"
-                onClick={() => setMobileOpen(false)}
-                className="block rounded-lg bg-primary px-3 py-2.5 text-center text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-              >
-                Orçamento
+            <li className="pt-2">
+              <a href="#contato" onClick={() => setMobileOpen(false)} className="btn-primary w-full">
+                Solicitar orçamento
               </a>
             </li>
           </ul>

@@ -4,7 +4,8 @@ import { AUTH_COOKIE_NAME, verifyAdminToken } from "@/lib/auth";
 import { getNewsletterLeads } from "@/lib/newsletter";
 
 export default async function NewsletterAdmin() {
-  const token = cookies().get(AUTH_COOKIE_NAME)?.value;
+  const cookieStore = await cookies();
+  const token = cookieStore.get(AUTH_COOKIE_NAME)?.value;
 
   if (!verifyAdminToken(token)) {
     redirect("/newsletter-admin/login");

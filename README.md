@@ -1,41 +1,51 @@
-# 🚀 Project Conetify
+# Connect Soluções Digitais
 
-Bem-vindo ao repositório oficial da **Conetify**, uma startup que conecta **marcas, empresas e empreendedores** ao universo digital por meio do desenvolvimento de **sites e aplicativos personalizados**. Nosso objetivo é transformar ideias em experiências digitais incríveis!
+Site institucional em Next.js com foco em conversão, com navegação, conteúdo em português do Brasil, páginas de serviços, formulário de contato, FAQ, páginas legais e páginas de agradecimento.
 
+## Como rodar
 
-## 💡 Sobre a Conetify
+1. Instale as dependências:
+   npm install
+2. Copie o arquivo de ambiente:
+   cp .env.example .env.local
+3. Inicie o projeto:
+   npm run dev
 
-A **Conetify** nasceu com a missão de facilitar a entrada de empresas no meio digital. Oferecemos soluções sob medida para quem precisa de um site moderno, responsivo ou um aplicativo funcional que represente sua marca com excelência.
+A aplicação fica disponível em http://localhost:3000.
 
-Se você tem um negócio e quer marcar presença no digital, a Conetify é pra você!
+## Variáveis de ambiente
 
+Crie um arquivo .env.local com as seguintes variáveis:
 
-## 🛠 Tecnologias Utilizadas
+```bash
+RESEND_API_KEY=
+CONTACT_TO_EMAIL=contato@connectsolucoes.example.com
+NEXT_PUBLIC_GA_ID=
+NEXT_PUBLIC_META_PIXEL_ID=
+```
 
-<div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap">
+## Estrutura principal
 
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" alt="React" title="React"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" height="40" alt="Sass" title="Sass"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg" height="40" alt="Vite" title="Vite"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="JavaScript" title="JavaScript"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="40" alt="Git" title="Git"/>
+- app/: páginas do App Router
+- components/: navegação, footer, formulário, botão de WhatsApp e blocos de seção
+- data/: textos e conteúdos centralizados da marca
+- lib/: utilitários, validação, analytics e UTM
 
-</div>
+## Como editar o conteúdo
 
+O texto do site foi centralizado em arquivos dentro da pasta data/ para facilitar manutenção sem espalhar textos nos componentes.
 
+Arquivos principais:
 
-## 📌 Funcionalidades
+- data/site.ts
+- data/services.ts
+- data/steps.ts
+- data/differentials.ts
+- data/faq.ts
+- data/cases.ts
 
-- Página inicial com apresentação da startup
-- Seção "Sobre" explicando os objetivos e diferenciais da Conetify
-- Página de contato para clientes solicitarem serviços
-- Navegação fluida com design responsivo
-- Estilo visual moderno e elegante
+## Observações
 
-
-## 👨‍💻 Em Desenvolvimento
-
-Este projeto está em construção 🚧 Fique à vontade para acompanhar os commits e a evolução do site da Conetify.
-
-
-**Conetify** — Conectando você ao digital.  
+- O projeto mantém compatibilidade com o App Router do Next.js.
+- Há pendências de dados reais que dependem do dono do projeto para confirmar links, e-mail, WhatsApp, logo e textos finais.
+- A estrutura foi adaptada ao projeto atual sem quebrar as rotas existentes.
