@@ -21,22 +21,25 @@ import { services } from '@/data/services'
 import { siteConfig } from '@/data/site'
 import { steps } from '@/data/steps'
 
-const trustItems = [
-  'Atendimento direto com o fundador',
-  'Soluções sob medida',
-  'Tecnologia moderna e performance',
-]
-
-const floatingChips = ['SEO', 'IA 24/7', 'CRM', 'Ads']
-
 export default function Page() {
   return (
     <>
       <Navbar />
       <main id="conteudo-principal">
         <section id="inicio" className="section-shell relative overflow-hidden">
-          <div className="container-shell grid items-center gap-10 py-12 lg:grid-cols-[1.1fr_0.9fr] lg:py-20">
-            <div>
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-15">
+            <Image
+              src="/images/files/connect-logo-simbolo-fundo-escuro.png"
+              alt=""
+              width={900}
+              height={900}
+              className="w-[780px] max-w-[80vw] select-none object-contain"
+              aria-hidden="true"
+            />
+          </div>
+
+          <div className="container-shell relative mx-auto max-w-[1200px] py-12 lg:py-20">
+            <div className="mx-auto max-w-[760px]">
               <span className="eyebrow">Soluções digitais completas</span>
               <h1 className="mt-6 max-w-[640px] font-display text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-[1.1] text-text">
                 Conectamos o seu negócio ao <span className="gradient-text">digital que dá resultado</span>
@@ -58,49 +61,6 @@ export default function Page() {
                 <a href="#servicos" className="inline-flex items-center gap-1 text-primary hover:text-primary-hover">
                   Ver serviços <ChevronRight className="h-4 w-4" />
                 </a>
-              </div>
-
-              <ul className="mt-10 grid gap-4 sm:grid-cols-3">
-                {trustItems.map((item) => (
-                  <li key={item} className="flex items-center gap-3 rounded-2xl border border-border bg-surface/60 p-3 text-sm text-text-muted">
-                    <span className="inline-flex rounded-full bg-primary/10 p-2 text-primary">
-                      <CheckCircle2 className="h-4 w-4" />
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="relative">
-              <div className="grid-pattern absolute inset-0 rounded-[2rem] opacity-30" />
-              <div className="relative rounded-[2rem] border border-border bg-surface/80 p-5 shadow-glow">
-                <div className="rounded-[1.6rem] border border-primary/20 bg-[#0a1d21] p-4">
-                  <div className="flex items-center justify-center rounded-[1.2rem] border border-primary/20 bg-[#0d252c] p-6">
-                    <Image
-                      src="/images/files/connect-logo-horizontal-fundo-escuro.png"
-                      alt="Logo da Connect"
-                      width={420}
-                      height={120}
-                      className="h-auto max-w-[90%]"
-                    />
-                  </div>
-
-                  <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-                    {floatingChips.map((chip) => (
-                      <span
-                        key={chip}
-                        className="rounded-full border border-primary/30 bg-[#0d252c] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary"
-                      >
-                        {chip}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mt-5 rounded-[1.2rem] border border-primary/25 bg-bg px-4 py-3 text-center text-lg font-semibold text-text shadow-[0_0_30px_rgba(64,196,217,0.08)]">
-                  Conexão digital
-                </div>
               </div>
             </div>
           </div>

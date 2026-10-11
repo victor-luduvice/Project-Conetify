@@ -30,17 +30,16 @@ export function Navbar() {
       </a>
       <nav className="container-shell flex items-center justify-between py-4">
         <a href="#inicio" className="flex items-center gap-3 text-base font-semibold tracking-tight text-text">
-          <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border border-primary/30 bg-primary/8">
+          <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-transparent">
             <Image
               src="/images/files/connect-logo-simbolo-fundo-escuro.png"
               alt="Logo da Connect"
-              width={28}
-              height={28}
-              className="object-contain"
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain"
             />
           </span>
-          <span className="font-display text-xl">Connect</span>
-          <span className="text-primary">.</span>
+          <span className="font-display text-[1.8rem] leading-none text-white">Connect</span>
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">
@@ -54,9 +53,6 @@ export function Navbar() {
         </ul>
 
         <div className="hidden md:flex md:items-center md:gap-3">
-          <a href={siteConfig.whatsappLink} className="text-sm text-text-muted hover:text-text">
-            WhatsApp
-          </a>
           <a href="#contato" className="btn-primary">
             Solicitar orçamento
           </a>
