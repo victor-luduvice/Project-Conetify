@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import {
   ArrowRight,
@@ -74,35 +75,31 @@ export default function Page() {
             <div className="relative">
               <div className="grid-pattern absolute inset-0 rounded-[2rem] opacity-30" />
               <div className="relative rounded-[2rem] border border-border bg-surface/80 p-5 shadow-glow">
-                <svg viewBox="0 0 500 420" className="h-auto w-full" aria-label="Ilustração de rede conectando estratégia digital">
-                  <defs>
-                    <linearGradient id="networkGlow" x1="0%" x2="100%" y1="0%" y2="100%">
-                      <stop offset="0%" stopColor="#40C4D9" stopOpacity="0.85" />
-                      <stop offset="100%" stopColor="#5BD3E6" stopOpacity="0.25" />
-                    </linearGradient>
-                  </defs>
-                  <g opacity="0.9">
-                    <circle cx="110" cy="140" r="7" fill="#40C4D9" />
-                    <circle cx="250" cy="80" r="7" fill="#40C4D9" />
-                    <circle cx="380" cy="130" r="7" fill="#40C4D9" />
-                    <circle cx="180" cy="290" r="7" fill="#40C4D9" />
-                    <circle cx="330" cy="290" r="7" fill="#40C4D9" />
-                    <line x1="110" y1="140" x2="250" y2="80" stroke="url(#networkGlow)" strokeWidth="2" />
-                    <line x1="250" y1="80" x2="380" y2="130" stroke="url(#networkGlow)" strokeWidth="2" />
-                    <line x1="180" y1="290" x2="250" y2="80" stroke="url(#networkGlow)" strokeWidth="2" />
-                    <line x1="330" y1="290" x2="380" y2="130" stroke="url(#networkGlow)" strokeWidth="2" />
-                    <line x1="110" y1="140" x2="180" y2="290" stroke="url(#networkGlow)" strokeWidth="2" />
-                    <line x1="180" y1="290" x2="330" y2="290" stroke="url(#networkGlow)" strokeWidth="2" />
-                  </g>
-                  <rect x="120" y="300" width="250" height="70" rx="18" fill="#132C31" stroke="rgba(64,196,217,0.3)" />
-                  <text x="146" y="358" fill="#F2F8F8" fontSize="26" fontWeight="700">Conexão digital</text>
-                </svg>
-                <div className="mt-4 flex flex-wrap gap-3">
-                  {floatingChips.map((chip) => (
-                    <span key={chip} className="rounded-full border border-primary/40 bg-bg px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-primary">
-                      {chip}
-                    </span>
-                  ))}
+                <div className="rounded-[1.6rem] border border-primary/20 bg-[#0a1d21] p-4">
+                  <div className="flex items-center justify-center rounded-[1.2rem] border border-primary/20 bg-[#0d252c] p-6">
+                    <Image
+                      src="/images/files/connect-logo-horizontal-fundo-escuro.png"
+                      alt="Logo da Connect"
+                      width={420}
+                      height={120}
+                      className="h-auto max-w-[90%]"
+                    />
+                  </div>
+
+                  <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                    {floatingChips.map((chip) => (
+                      <span
+                        key={chip}
+                        className="rounded-full border border-primary/30 bg-[#0d252c] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary"
+                      >
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-5 rounded-[1.2rem] border border-primary/25 bg-bg px-4 py-3 text-center text-lg font-semibold text-text shadow-[0_0_30px_rgba(64,196,217,0.08)]">
+                  Conexão digital
                 </div>
               </div>
             </div>

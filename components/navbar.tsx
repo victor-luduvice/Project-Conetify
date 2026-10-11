@@ -1,5 +1,6 @@
 "use client"
 
+import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
@@ -28,7 +29,16 @@ export function Navbar() {
         Pular para o conteúdo
       </a>
       <nav className="container-shell flex items-center justify-between py-4">
-        <a href="#inicio" className="flex items-center gap-2 text-base font-semibold tracking-tight text-text">
+        <a href="#inicio" className="flex items-center gap-3 text-base font-semibold tracking-tight text-text">
+          <span className="relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border border-primary/30 bg-primary/8">
+            <Image
+              src="/images/files/connect-logo-simbolo-fundo-escuro.png"
+              alt="Logo da Connect"
+              width={28}
+              height={28}
+              className="object-contain"
+            />
+          </span>
           <span className="font-display text-xl">Connect</span>
           <span className="text-primary">.</span>
         </a>
