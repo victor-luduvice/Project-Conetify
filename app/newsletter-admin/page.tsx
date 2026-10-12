@@ -4,13 +4,14 @@ import { AUTH_COOKIE_NAME, verifyAdminToken } from "@/lib/auth";
 import { getNewsletterLeads } from "@/lib/newsletter";
 
 export default async function NewsletterAdmin() {
-  const token = cookies().get(AUTH_COOKIE_NAME)?.value;
+  const cookieStore = await cookies();
+  const token = cookieStore.get(AUTH_COOKIE_NAME)?.value;
 
   if (!verifyAdminToken(token)) {
     redirect("/newsletter-admin/login");
   }
 
-  const leads = getNewsletterLeads();
+  const leads = await getNewsletterLeads();
 
   return (
     <div className="min-h-screen bg-background px-6 py-16 text-foreground">

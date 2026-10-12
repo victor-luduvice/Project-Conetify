@@ -1,41 +1,58 @@
-# 🚀 Project Conetify
+# Connect Soluções Digitais
 
-Bem-vindo ao repositório oficial da **Conetify**, uma startup que conecta **marcas, empresas e empreendedores** ao universo digital por meio do desenvolvimento de **sites e aplicativos personalizados**. Nosso objetivo é transformar ideias em experiências digitais incríveis!
+Site institucional em Next.js com páginas de serviços, formulário de contato, newsletter, avaliações, painel administrativo e páginas legais.
 
+## Desenvolvimento local
 
-## 💡 Sobre a Conetify
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
 
-A **Conetify** nasceu com a missão de facilitar a entrada de empresas no meio digital. Oferecemos soluções sob medida para quem precisa de um site moderno, responsivo ou um aplicativo funcional que represente sua marca com excelência.
+O site fica em `http://localhost:3000`. Para testar o painel administrativo localmente, preencha `NEWSLETTER_ADMIN_USERNAME`, `NEWSLETTER_ADMIN_PASSWORD` e `NEWSLETTER_AUTH_SECRET` em `.env.local`. A senha precisa ter pelo menos 12 caracteres e o segredo pelo menos 32.
 
-Se você tem um negócio e quer marcar presença no digital, a Conetify é pra você!
+Sem Supabase, o desenvolvimento local usa `data/newsletter-leads.json` e `data/comments.json`. Esses arquivos não são usados como armazenamento em produção.
 
+## Serviços necessários em produção
 
-## 🛠 Tecnologias Utilizadas
+### Supabase
 
-<div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap">
+Crie um projeto Supabase e execute o conteúdo de `supabase/schema.sql` no SQL Editor.
 
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" alt="React" title="React"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" height="40" alt="Sass" title="Sass"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg" height="40" alt="Vite" title="Vite"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="JavaScript" title="JavaScript"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="40" alt="Git" title="Git"/>
+Nas variáveis de ambiente, configure `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY` usando o endereço do projeto e a chave `service_role` do Supabase. A chave é secreta e deve existir somente no ambiente do servidor; não use o prefixo `NEXT_PUBLIC_` nela.
 
-</div>
+### Resend
 
+Crie uma API key no Resend, verifique o domínio remetente e configure `RESEND_API_KEY` e `RESEND_FROM_EMAIL` com um endereço desse domínio. Configure `CONTACT_TO_EMAIL` com o endereço que receberá os pedidos. Sem essas configurações, a API do formulário responde como indisponível e não mostra confirmação falsa.
 
+### Acesso administrativo
 
-## 📌 Funcionalidades
+Configure `NEWSLETTER_ADMIN_USERNAME`, `NEWSLETTER_ADMIN_PASSWORD` e `NEWSLETTER_AUTH_SECRET`. Use uma senha com pelo menos 12 caracteres e gere um segredo aleatório com:
 
-- Página inicial com apresentação da startup
-- Seção "Sobre" explicando os objetivos e diferenciais da Conetify
-- Página de contato para clientes solicitarem serviços
-- Navegação fluida com design responsivo
-- Estilo visual moderno e elegante
+```bash
+openssl rand -base64 48
+```
 
+O login do painel fica em `/admin/login` e `/newsletter-admin/login`.
 
-## 👨‍💻 Em Desenvolvimento
+## Publicação no Vercel
 
-Este projeto está em construção 🚧 Fique à vontade para acompanhar os commits e a evolução do site da Conetify.
+1. Envie a branch aprovada ao GitHub e faça merge na branch configurada como produção.
+2. No Vercel, importe o repositório `victor-luduvice/Project-Conetify` e mantenha o preset Next.js e os comandos padrão (`npm run build`).
+3. Em **Settings > Environment Variables**, cadastre as variáveis de Supabase, Resend e administração acima, além de `NEXT_PUBLIC_SITE_URL=https://www.connectsolucoes.com.br`. Aplique as variáveis ao ambiente Production.
+4. Faça o deploy de produção e teste envio do formulário, inscrição da newsletter, avaliações e login administrativo.
+5. Adicione `connectsolucoes.com.br` e `www.connectsolucoes.com.br` em **Settings > Domains** e configure no DNS os registros indicados pelo Vercel.
 
+`MAILCHIMP_API_KEY`, `MAILCHIMP_LIST_ID` e `GOOGLE_SHEETS_WEBHOOK_URL` são integrações opcionais para cópia dos novos inscritos. `NEXT_PUBLIC_GA_ID` e `NEXT_PUBLIC_META_PIXEL_ID` também são opcionais.
 
-**Conetify** — Conectando você ao digital.  
+## Comandos
+
+- `npm run dev`: desenvolvimento local
+- `npm run lint`: lint
+- `npx tsc --noEmit`: verificação de tipos
+- `npm run build`: build de produção
+
+## Conteúdo
+
+O conteúdo da marca e dos serviços fica centralizado em `data/`. As páginas e rotas ficam em `app/`, os componentes em `components/` e integrações/validações em `lib/`.

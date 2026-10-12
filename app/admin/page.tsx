@@ -12,8 +12,10 @@ export default async function AdminPage() {
     redirect("/admin/login");
   }
 
-  const leads = getNewsletterLeads();
-  const comments = getAllComments();
+  const [leads, comments] = await Promise.all([
+    getNewsletterLeads(),
+    getAllComments(),
+  ]);
 
   return (
     <div className="min-h-screen bg-background px-6 py-16 text-foreground">
@@ -95,7 +97,7 @@ export default async function AdminPage() {
               </div>
             ) : (
               <div className="divide-y divide-border">
-                {comments.map((comment, index: number) => (
+                {comments.map((comment) => (
                   <div
                     key={`${comment.name}-${comment.createdAt}`}
                     className="px-6 py-5"
